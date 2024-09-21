@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 
 export class AppComponent {
   emailForm: FormGroup;
-  
+    
   constructor(private formBuilder: FormBuilder) {
     this.emailForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
@@ -32,7 +27,7 @@ export class AppComponent {
       input.placeholder = 'example@email.com'; // Restore placeholder if input is empty
     }
   }
-  
+
   onSubmit() {
     if (this.emailForm.valid) {
       const emailValue = this.emailForm.value.email;
