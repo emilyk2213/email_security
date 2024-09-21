@@ -1,0 +1,30 @@
+<div class="container" id="email-form">
+  <div class="container upper-data">
+    <img src="images/email.png">
+  </div>
+  
+  <div class="container lower-data">
+    <div class="container">
+      <h3>Add an Email Address to Check</h3>
+    </div>
+    <div class="container">
+      <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+        <div class="container" id="inputContainer">
+          <div class="form-group">
+            <input id="email" type="email" formControlName="email" placeholder="example@email.com" required class="form-control" (focus)="onFocus($event)" (blur)="onBlur($event)">
+          </div>
+          <hr style="border: 1.2px solid #969191; width: 95%;">
+        </div>
+        <div class="btn-container">
+          <button type="submit" [disabled]="emailForm.invalid">Generate Report</button>
+        </div>
+      </form>
+    </div>
+    <!-- <div *ngIf="emailForm.get('email')?.invalid && (emailForm.get('email')?.dirty || emailForm.get('email')?.touched)" class="alert alert-danger">
+      <label id="errortext">Please enter a valid email address</label>
+    </div> -->
+  </div>
+  
+</div>
+
+<router-outlet />
