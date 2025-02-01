@@ -5,9 +5,9 @@ Over the last few years, I have received quite a few emails where I was not conf
 In 2024, I came up with the idea for an app where users could input their email address and run a 'scan' on it. TThis scan would check whether the email's credentials had ever been leaked, if it had been involved in a data breach, and perform a few other checks. Ultimately, the app would determine if the supplied email address is valid and assess its reputation.
 
 This app connects to an API [https://emailrep.io/] which answers the following questions:
-### Is this email risky?
-### What kind of online presence does this email have?
-### Is the sender trustworthy?
+Is this email risky?
+What kind of online presence does this email have?
+Is the sender trustworthy?
 
 ## Parameters:
 - email
