@@ -1,0 +1,35 @@
+{
+  "email": "example@email.com",
+  "reputation": "high",
+  "suspicious": true,
+  "references": 1,
+  "details": {
+    "blacklisted": true,
+    "malicious_activity": false,
+    "malicious_activity_recent": false,
+    "credentials_leaked": false,
+    "credentials_leaked_recent": false,
+    "data_breach": false,
+    "first_seen": "never",
+    "last_seen": "never",
+    "domain_exists": true,
+    "domain_reputation": "n/a",
+    "new_domain": false,
+    "days_since_domain_creation": 5,
+    "suspicious_tld": false,
+    "spam": false,
+    "free_provider": true,
+    "disposable": false,
+    "deliverable": true,
+    "accept_all": false,
+    "valid_mx": true,
+    "primary_mx": "gmail-smtp-in.l.google.com",
+    "spoofable": true,
+    "spf_strict": false,
+    "dmarc_enforced": false,
+    "profiles": [
+      "twitter"
+    ]
+  },
+  "summary": "This email address has been seen in 1 reputable source on the internet, Twitter. We've observed no malicious or suspicious activity from this address. "
+}

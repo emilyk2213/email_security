@@ -10,13 +10,14 @@
     <div class="container">
       <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
         <div class="container" id="inputContainer">
+          <span class="help-icon" (click)="openDummyPopup()" title="What will the report contain?">What does this do?</span>
           <div class="form-group">
             <input id="email" type="email" formControlName="email" placeholder="example@email.com" required class="form-control" (focus)="onFocus($event)" (blur)="onBlur($event)">
           </div>
           <hr style="border: 1.2px solid #969191; width: 95%;">
         </div>
         <div class="btn-container">
-          <button type="submit" [disabled]="emailForm.invalid">Generate Report</button>
+          <button id="btnGenerateReport" type="submit" [disabled]="emailForm.invalid">Check Email</button>
         </div>
       </form>
     </div>
@@ -27,4 +28,56 @@
   
 </div>
 
+<div *ngIf="isDummyPopupOpen" class="popup-modal">
+  <div class="popup-content">
+    <span class="close" (click)="closeDummyPopup()">&times;</span>
+    <h2 style="margin-bottom: 10px;">Email Security Analysis</h2>
+    <p>A report will be generated using the provided email, showing the following results:</p>
+    <div id="riskStatusContainer" class="container" *ngIf="securityData">
+      <b>{{securityData.email}}</b>
+      <br>
+      Reputation: {{securityData.reputation}}<br>
+      Suspicious: {{securityData.suspicious}}<br>
+      Malicious Activity: {{securityData.details.malicious_activity}}<br>
+      Credentials Leaked: {{securityData.details.credentials_leaked}}<br>
+      Data Breach: {{securityData.details.data_breach}}<br>
+      Spam Email: {{securityData.details.spam}}<br>
+      Spoofable: {{securityData.details.spoofable}}<br>
+    </div>
+    <div style="margin: 10px 0px 10px;" class="container">
+      There will be a "Download Report" button to download a full report of the findings.
+    </div>
+    <button id="btn_dummy_report" (click)="downloadDummyReport()">Download Report</button>
+    <div style="margin: 20px;" *ngIf="isLoading" class="loading-indicator">
+      Downloading report...
+    </div>
+  </div>
+</div>
+
+
 <router-outlet />
+<div *ngIf="isPopupOpen" class="popup-modal">
+  <div class="popup-content">
+    <span class="close" (click)="closePopup()">&times;</span>
+    <h2 style="margin-bottom: 10px;">Email Security Analysis</h2>
+    <p>A report will be generated using the provided email, showing the following results:</p>
+    <div id="riskStatusContainer" class="container" *ngIf="securityData">
+      <b>Email: {{securityData.email}}</b>
+      <br>
+      Reputation: {{securityData.reputation}}<br>
+      Suspicious: {{securityData.suspicious}}<br>
+      Malicious Activity: {{securityData.details.malicious_activity}}<br>
+      Credentials Leaked: {{securityData.details.credentials_leaked}}<br>
+      Data Breach: {{securityData.details.data_breach}}<br>
+      Spam Email: {{securityData.details.spam}}<br>
+      Spoofable: {{securityData.details.spoofable}}<br>
+    </div>
+    <div style="margin: 10px 0px 10px;" class="container" *ngIf="securityData">
+      {{securityData.summary}}
+    </div>
+    <button id="btn_dummy_report" (click)="downloadReport()">Download Report</button>
+    <div style="margin: 20px;" *ngIf="isLoading" class="loading-indicator">
+      Downloading report...
+    </div>
+  </div>
+</div>
